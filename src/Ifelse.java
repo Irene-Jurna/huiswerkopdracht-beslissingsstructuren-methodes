@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Ifelse {
@@ -19,9 +20,24 @@ public class Ifelse {
         Main.postiveOrZeroOrNegativ(userInput2);
 
         // Opdracht 5
-        int age = getUserInput();
         System.out.println("Typ de leeftijd van de persoon van wie je de levensfase wil checken: ");
+        int age = getUserInput();
         returnLifePhase(age);
+
+        // Opdracht 6
+        String text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+        checkTextLength(text);
+
+        // Opdracht 7
+        int year = 2025;
+        isLeapYear(year);
+
+        // Opdracht 8
+        int[] array = {23, 52, 76, 30, 15, 101, 99, 0, -5, 30};
+        printHighestNumber(array);
+
+        // Opdracht 10
+        calculate(2, 3, "+");
     }
 
     public static int getUserInput() {
@@ -74,6 +90,54 @@ public class Ifelse {
             System.out.println("Deze persoon is een senior");
         } else {
             System.out.println("Verkeerde invoer");
+        }
+    }
+
+    public static void checkTextLength(String text) {
+        String textAdjective;
+
+        if (text.length() < 10) {
+            textAdjective = "kort";
+        } else if (text.length() > 20) {
+            textAdjective = "lang";
+        } else {
+            textAdjective = "middellang";
+        }
+        System.out.println("Met " + text.length() + " tekens is dit een " + textAdjective + "e tekst.");
+    }
+
+    public static void isLeapYear(int year) {
+            if (year % 4 == 0 && year % 100 == 0 && year % 400 == 0) {
+                System.out.println(year + " is een schrikkeljaar");
+            } else if (year % 4 == 0 && !(year % 100 == 0)) {
+                System.out.println(year + " is een schrikkeljaar");
+        } else {
+                System.out.println(year + " is geen schrikkeljaar");
+            }
+    }
+
+    public static void printHighestNumber(int[] array) {
+        try {
+            int highestNumber = Arrays.stream(array).max().getAsInt();
+            System.out.println("Het grootste getal uit deze array is: " + highestNumber);
+        } catch (Exception e){
+            System.out.println("Geen getallen gevonden");
+        }
+    }
+
+    public static void calculate(double num1, double num2, String operator) {
+        switch (operator) {
+            case "+":
+                System.out.println(num1+  " + " + num2 + " = " + (num1 + num2));
+                break;
+            case "-":
+                System.out.println(num1+  " - " + num2 + " = " + (num1 - num2));
+                break;
+            case "*":
+                System.out.println(num1+  " * " + num2 + " = " + (num1 * num2));
+                break;
+            case "/":
+                System.out.println(num1+  " / " + num2 + " = " + (num1 / num2));
         }
     }
 }
